@@ -151,6 +151,7 @@ let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 
 " Settings for python-mode
