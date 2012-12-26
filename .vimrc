@@ -93,6 +93,9 @@ highlight ColorColumn ctermbg=233
 " Useful settings
 set history=700
 set undolevels=700
+nnoremap j gj
+nnoremap k gk
+noremap <F1> <Esc>
 
 
 " Real programmers don't use TABs but spaces
