@@ -184,15 +184,10 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 " Python folding
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-"" set nofoldenable
+set nofoldenable
 
 " Make shift-insert work like in Xterm (and other mouse related configs)
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 set mousehide        " Hide the mouse when typing text
-
-" Status line
-set laststatus=2
-set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ 
-
 
