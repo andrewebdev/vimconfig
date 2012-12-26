@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git clone https://github.com/klen/python-mode.git python-mode && rm -rf python-mode/.git
+git clone https://github.com/msanders/snipmate.vim.git snipmate && rm -rf snipmate/.git
+git clone https://github.com/tpope/vim-surround.git surround && rm -rf surround/.git
+git clone https://github.com/vim-scripts/TaskList.vim.git tasklist && rm -rf tasklist/.git
+git clone https://github.com/vim-scripts/The-NERD-tree.git nerdtree && rm -rf nerdtree/.git
+
