@@ -1,8 +1,7 @@
+execute pathogen#infect()
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
-
-execute pathogen#infect()
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
