@@ -17,7 +17,6 @@ set clipboard=unnamed
 
 " Rebind <Leader> key
 " I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
 let mapleader = ","
 
 
@@ -135,7 +134,7 @@ syntax on
 
 
 " ============================================================================
-" Python IDE Setup
+" Plugins Setup
 " ============================================================================
 
 
@@ -169,6 +168,7 @@ let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
+
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
 set completeopt=longest,menuone
@@ -191,6 +191,7 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 set nofoldenable
+
 
 " Make shift-insert work like in Xterm (and other mouse related configs)
 map <S-Insert> <MiddleMouse>
