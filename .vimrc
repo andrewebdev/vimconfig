@@ -1,7 +1,25 @@
-execute pathogen#infect()
+" Set up Vundle to manage vim bundles
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+
+" Bundles
+Bundle 'klen/python-mode.git'
+Bundle 'msanders/snipmate.vim.git'
+Bundle 'vim-scripts/ZenCoding.vim.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'scrooloose/nerdtree'
+Bundle 'dart-lang/dart-vim-plugin.git'
+
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -16,7 +34,6 @@ set clipboard=unnamed
 
 
 " Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
 let mapleader = ","
 
 
@@ -64,9 +81,8 @@ vnoremap > >gv  " better indentation
 
 
 " Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
 
 
 " Color scheme
@@ -81,8 +97,6 @@ set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
 
 
 " easier formatting of paragraphs
@@ -115,27 +129,39 @@ set smartcase
 
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers
-"" set nobackup
-"" set nowritebackup
-"" set noswapfile
+set nobackup
+set nowritebackup
+set noswapfile
 
 
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
-
-" ... also do syntax highligting
+" Syntax highligting
 filetype plugin indent on
 syntax on
+
+
+" Python folding
+" mkdir -p ~/.vim/ftplugin
+" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
+set nofoldenable
+
+
+" Make shift-insert work like in Xterm (and other mouse related configs)
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
+set mousehide        " Hide the mouse when typing text
+
+
+" Show the safe character limit
+let &colorcolumn=join(range(80,999),",")
+highlight ColorColumn ctermbg=235
 
 
 " ============================================================================
 " Plugins Setup
 " ============================================================================
+
+" NerdTree
+map <F9> :NERDTree<CR>
 
 
 " Settings for vim-powerline
@@ -166,6 +192,7 @@ let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
+let g:pymode_lint_ignore = "E501,W"
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
@@ -185,16 +212,4 @@ endfunction
 
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-
-" Python folding
-" mkdir -p ~/.vim/ftplugin
-" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-set nofoldenable
-
-
-" Make shift-insert work like in Xterm (and other mouse related configs)
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-set mousehide        " Hide the mouse when typing text
 
