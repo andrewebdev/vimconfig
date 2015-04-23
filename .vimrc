@@ -1,20 +1,41 @@
 " Set up Vundle to manage vim bundles
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/vundle'
 
 " Bundles
-Bundle 'klen/python-mode.git'
-Bundle 'msanders/snipmate.vim.git'
-Bundle 'vim-scripts/ZenCoding.vim.git'
-Bundle 'tpope/vim-surround.git'
-Bundle 'kien/ctrlp.vim.git'
-Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'scrooloose/nerdtree'
-Bundle 'dart-lang/dart-vim-plugin.git'
+Plugin 'klen/python-mode.git'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate.git'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-surround.git'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'Lokaltog/vim-powerline.git'
+Plugin 'scrooloose/nerdtree'
+Plugin 'dart-lang/dart-vim-plugin.git'
+Plugin 'fatih/vim-go.git'
+
+" This one is a collection of snippets for vim-snipmate
+Plugin 'honza/vim-snippets'
+
+call vundle#end()  " required to be at end of plugins
+filetype plugin indent on  " required by vundle
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 
 " Automatic reloading of .vimrc
@@ -28,11 +49,6 @@ set pastetoggle=<F2>
 set clipboard=unnamed
 
 
-" Mouse and backspace
-"" set mouse=a  " on OSX press ALT and click
-"" set bs=2     " make backspace behave like normal again
-
-
 " Rebind <Leader> key
 let mapleader = ","
 
@@ -43,12 +59,6 @@ let mapleader = ","
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
-
-
-" Quicksave command
-noremap <c-s> :update<CR>
-vnoremap <c-s> <c-c>:update<CR>
-inoremap <c-s> <c-o>:update<CR>
 
 
 " Quick quit command
@@ -67,10 +77,6 @@ map <c-h> <c-w>h
 " easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
-
-
-" map sort function to a key
-"" vnoremap <Leader>s :sort<CR>
 
 
 " easier moving of code blocks
@@ -94,7 +100,7 @@ color wombat256mod
 
 " Showing line numbers and length
 set number  " show line numbers
-set tw=79   " width of document (used by gd)
+set tw=80   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 
@@ -107,8 +113,8 @@ set fo-=t   " don't automatically wrap text when typing
 " Useful settings
 set history=700
 set undolevels=700
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 noremap <F1> <Esc>
 
 
@@ -135,20 +141,11 @@ set noswapfile
 
 
 " Syntax highligting
-filetype plugin indent on
 syntax on
 
 
-" Python folding
-" mkdir -p ~/.vim/ftplugin
-" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-set nofoldenable
-
-
-" Make shift-insert work like in Xterm (and other mouse related configs)
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-set mousehide        " Hide the mouse when typing text
+" Hide the mouse when typing text
+set mousehide
 
 
 " Show the safe character limit
@@ -194,6 +191,12 @@ let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_lint_ignore = "E501,W"
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+
+
+" Emmet
+" Only use emmet in html and css files
+let g:user_emmet_install_global = 0
+autocmd FileType html,htmldjango,css EmmetInstall
 
 
 " Better navigating through omnicomplete option list
