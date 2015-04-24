@@ -7,6 +7,7 @@ Plugin 'gmarik/vundle'
 
 " Bundles
 Plugin 'klen/python-mode.git'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate.git'
@@ -40,6 +41,11 @@ filetype plugin indent on  " required by vundle
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+
+
+" Set a default colorscheme
+" set t_Co=256
+color wombat256mod
 
 
 " Better copy & paste
@@ -91,14 +97,8 @@ exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
 
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-set t_Co=256
-color wombat256mod
-
-
 " Showing line numbers and length
+set relativenumber  " relative line numbers
 set number  " show line numbers
 set tw=80   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
@@ -151,6 +151,7 @@ set mousehide
 " Show the safe character limit
 let &colorcolumn=join(range(80,999),",")
 highlight ColorColumn ctermbg=235
+highlight ColorColumn guibg=#111111
 
 
 " ============================================================================
