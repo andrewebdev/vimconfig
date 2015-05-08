@@ -16,7 +16,6 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'Lokaltog/vim-powerline.git'
 Plugin 'scrooloose/nerdtree'
-Plugin 'dart-lang/dart-vim-plugin.git'
 Plugin 'fatih/vim-go.git'
 
 " This one is a collection of snippets for vim-snipmate
@@ -44,7 +43,7 @@ autocmd! bufwritepost .vimrc source %
 
 
 " Set a default colorscheme
-" set t_Co=256
+set t_Co=256
 color wombat256mod
 
 
@@ -113,8 +112,8 @@ set fo-=t   " don't automatically wrap text when typing
 " Useful settings
 set history=700
 set undolevels=700
-" nnoremap j gj
-" nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 noremap <F1> <Esc>
 
 
@@ -180,8 +179,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 
 " Settings for python-mode
-" cd ~/.vim/bundle
-" git clone https://github.com/klen/python-mode
 map <Leader>g :call RopeGotoDefinition()<CR>
 let ropevim_enable_shortcuts = 1
 let g:pymode_rope_goto_def_newwin = "vnew"
@@ -191,7 +188,8 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_lint_ignore = "E501,W"
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+let g:pymode_rope_complete_on_dot = 0
+map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 
 " Emmet
@@ -213,7 +211,6 @@ function! OmniPopup(action)
     endif
     return a:action
 endfunction
-
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
