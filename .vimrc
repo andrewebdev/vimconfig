@@ -1,5 +1,8 @@
 " Set up Vundle to manage vim bundles
 set nocompatible
+set encoding=utf-8
+
+" Vundle setup
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,16 +13,12 @@ Plugin 'klen/python-mode.git'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate.git'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'Lokaltog/vim-powerline.git'
 Plugin 'scrooloose/nerdtree'
-Plugin 'fatih/vim-go.git'
-
-" This one is a collection of snippets for vim-snipmate
-Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
 
 call vundle#end()  " required to be at end of plugins
 filetype plugin indent on  " required by vundle
@@ -46,6 +45,9 @@ autocmd! bufwritepost .vimrc source %
 set t_Co=256
 color wombat256mod
 
+
+" faster redraw
+set ttyfast
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -124,6 +126,14 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
+" Space vs Tab Switching
+" Some people and projects insist on tabs however, so this
+" will enable it for the session again
+map <Leader>t :set noet ci pi sts=0<CR>
+
+" This will set it back to spaces
+map <Leader>s :set et noci nopi sts=4<CR>
+
 
 " Make search case insensitive
 set hlsearch
@@ -191,7 +201,6 @@ let g:pymode_lint_ignore = "E501,W"
 let g:pymode_rope_complete_on_dot = 0
 map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
-
 " Emmet
 " Only use emmet in html and css files
 let g:user_emmet_install_global = 0
@@ -214,3 +223,18 @@ endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
+
+" Custom function to change 2 space indent to 4
+function NewIndent()
+    " Set every 2 spaces to a tab Character
+    set ts=2 sts=2 noet
+    retab!
+
+    " Change every tab back to 4 spaces
+    set ts=4 sts=4 et
+    retab
+endfunction
+
+
+" Override indentation for yaml files
+au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2

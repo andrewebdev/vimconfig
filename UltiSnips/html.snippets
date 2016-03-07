@@ -1,0 +1,41 @@
+snippet module
+<dom-module id="$1">
+    <style>
+        $2
+    </style>
+    <template>
+        $3
+    </template>
+</dom-module>
+<script>
+    (function() {
+        'use strict';
+
+        Polymer({
+            is: '$1'
+        });
+
+    })();
+</script>
+endsnippet
+
+snippet djinclude
+{% include '$1' %}
+endsnippet
+
+snippet block
+{% block $1 %}
+{% endblock %}
+endsnippet
+
+snippet djif
+{% if $1 %}
+    $2
+{% endif %}
+endsnippet
+
+snippet comment
+{% comment %}
+    $1
+{% endcomment %}
+endsnippet
