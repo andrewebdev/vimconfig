@@ -16,9 +16,10 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround.git'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'Lokaltog/vim-powerline.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-fugitive'
+Plugin 'https://github.com/python-rope/ropevim.git'
 
 call vundle#end()  " required to be at end of plugins
 filetype plugin indent on  " required by vundle
@@ -171,9 +172,11 @@ highlight ColorColumn guibg=#111111
 map <F9> :NERDTree<CR>
 
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
+" Settings for powerline
+" https://powerline.readthedocs.org/en/latest/index.html
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 set laststatus=2
 
 
