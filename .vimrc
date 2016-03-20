@@ -44,7 +44,7 @@ autocmd! bufwritepost .vimrc source %
 
 " Set a default colorscheme
 set t_Co=256
-color wombat256mod
+color hybrid
 
 
 " faster redraw
