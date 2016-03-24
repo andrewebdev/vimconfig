@@ -44,7 +44,10 @@ autocmd! bufwritepost .vimrc source %
 
 " Set a default colorscheme
 set t_Co=256
-color hybrid
+colorscheme Tomorrow
+" colorscheme Tomorrow-Night
+" colorscheme soda
+" colorscheme apprentice
 
 
 " faster redraw
@@ -159,8 +162,8 @@ set mousehide
 
 
 " Show the safe character limit
-let &colorcolumn=join(range(80,999),",")
-highlight ColorColumn ctermbg=235
+let &colorcolumn=join(range(80,80),",")
+highlight ColorColumn ctermbg=255
 highlight ColorColumn guibg=#111111
 
 
