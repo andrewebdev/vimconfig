@@ -44,7 +44,10 @@ autocmd! bufwritepost .vimrc source %
 
 " Set a default colorscheme
 set t_Co=256
-color hybrid
+colorscheme Tomorrow
+" colorscheme Tomorrow-Night
+" colorscheme soda
+" colorscheme apprentice
 
 
 " faster redraw
@@ -160,8 +163,8 @@ set mousehide
 
 " Show the safe character limit
 let &colorcolumn=join(range(80,999),",")
-highlight ColorColumn ctermbg=235
 highlight ColorColumn guibg=#111111
+highlight ColorColumn ctermbg=255
 
 
 " ============================================================================
@@ -190,25 +193,29 @@ set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/venv/*
 
 
 " Settings for python-mode and rope
-map <Leader>g :call RopeGotoDefinition()<CR>
 let ropevim_enable_shortcuts = 1
 let g:pymode_rope_goto_def_newwin = "vnew"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
+let g:pymode_motion = 1
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
+let g:pymode_lint_on_write = 0
 let g:pymode_lint_ignore = "E501,W"
 let g:pymode_rope_complete_on_dot = 0
-map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+
+map <Leader>g :RopeGotoDefinition<CR>
+map <Leader>l :PymodeLint<CR>
 
 " Emmet
 " Only use emmet in html and css files
 let g:user_emmet_install_global = 0
-autocmd FileType html,htmldjango,css EmmetInstall
+autocmd FileType html,htmldjango,css,less EmmetInstall
 
 
 " Better navigating through omnicomplete option list
